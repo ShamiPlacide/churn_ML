@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: churn-mlops-api
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: MODEL_PATH
+        value: models/model.joblib
+      - key: MODEL_VERSION
+        value: v1
